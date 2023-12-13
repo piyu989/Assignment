@@ -1,0 +1,109 @@
+<!-- customer-list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            padding: 80px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Customer List</h2>
+        <table id="customerTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Street</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table body will be populated by Thymeleaf -->
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.firstName}"></td>
+                    <td th:text="${customer.lastName}"></td>
+                    <td th:text="${customer.street}"></td>
+                    <td th:text="${customer.address}"></td>
+                    <td th:text="${customer.city}"></td>
+                    <td th:text="${customer.state}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.phone}"></td>
+                    <td>
+                        <!-- Add your action link or button here -->
+                        <a th:href="@{/updateUser/{id}(id=${customer.id})}" class="btn btn-warning btn-sm" role="button">
+                            ✏️
+                        </a>
+                        <a th:href="@{/deleteUser/{id}(id=${customer.id})}" class="btn btn-danger btn-sm" role="button" onclick="return confirm('Are you sure you want to delete this customer?');">
+                            ➖
+                        </a>	
+                    </td>
+                </tr>
+            </tbody>
+			
+			<a th:href="@{/registration}" 
+				class="btn btn-primary btn-block mt-3 
+					   text-uppercase font-weight-bold 
+					   text-uppercase" 
+				style="display: inline-block; 
+					   padding: 10px; 
+					   background-color: #3498db; 
+					   color: #fff; 
+					   text-align: center; 
+					   text-decoration: none;  
+					   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+			    Add customer
+			</a>
+
+        </table>
+    </div>
+</body>
+</html>
