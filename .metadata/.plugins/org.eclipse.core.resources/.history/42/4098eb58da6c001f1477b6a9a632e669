@@ -1,5 +1,0 @@
-package com.sec.repo;
-
-public interface UserRepository {
-
-}
