@@ -1,16 +1,23 @@
-FROM node:alpine AS development
+# Use the appropriate Node.js version (20.17.0)
+FROM node:20.17.0-alpine
 
-# Copy the package.json and package-lock.json files to the root directory of the container
-COPY package.json package-lock.json ./
+# Set the working directory inside the container
+WORKDIR /app
 
-# Install dependencies
+# Copy the package.json and package-lock.json (if available)
+COPY package*.json ./
+
+# Install the dependencies
 RUN npm install
 
-# Copy the rest of the application code to the root directory of the container
+# Copy the rest of the app's source code
 COPY . .
 
-# Expose the desired port (e.g., 3000)
+# Build the React app for production
+RUN npm run build
+
+# Expose port 3000 (React default)
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Start the React application
+CMD ["npm", "run", "start"]

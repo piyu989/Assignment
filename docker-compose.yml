@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  react-app:
+    image: react-app:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+
+  eurekaserver-app:
+    image: eurekaserver-app:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - mynetwork
+
+  spring-src-app:
+    image: spring-src-app:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+    depends_on:
+      - eurekaserver-app
+
+  spring-student-app:
+    image: spring-student-app:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - mynetwork
+    depends_on:
+      - eurekaserver-app
+
+  gateway-app:
+    image: gateway-app:latest
+    ports:
+      - "9090:9090"
+    networks:
+      - mynetwork
+    depends_on:
+      - eurekaserver-app
+      - spring-src-app
+      - spring-student-app
+
+

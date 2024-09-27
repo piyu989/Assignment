@@ -5,10 +5,10 @@ FROM openjdk:17.0.2-jdk-slim
 WORKDIR /app
 
 # Copy the jar file into the working directory
-COPY target/SpringSrc-0.0.1-SNAPSHOT.jar /app/SpringSrc-0.0.1-SNAPSHOT.jar
+COPY target/EurekaServer-0.0.1-SNAPSHOT.jar /app/EurekaServer-0.0.1-SNAPSHOT.jar
 
 # Expose the port your Spring Boot app is running on
-EXPOSE 8080
+EXPOSE 8761
 
 # Run the application
-CMD ["java", "-jar", "SpringSrc-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "EurekaServer-0.0.1-SNAPSHOT.jar"]
