@@ -10,9 +10,14 @@
 -  Handles edge cases (empty inputs, file errors, etc.)
 -  Well-documented with comments and complexity analysis.
 
-- 
+  
 ## File Structure
 
 ├── DictionarySearch.java   
 ├── list.txt                
 └── README.md               
+
+## How to run
+
+- javac DictionarySearch.java
+- java DictionarySearch
