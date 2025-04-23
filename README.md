@@ -13,6 +13,6 @@
 - 
 ## File Structure
 
-├── DictionarySearch.java   // Main driver with Trie logic and I/O
-├── list.txt                // Dictionary file (word list, one per line)
-└── README.md               // This file
+├── DictionarySearch.java   
+├── list.txt                
+└── README.md               
